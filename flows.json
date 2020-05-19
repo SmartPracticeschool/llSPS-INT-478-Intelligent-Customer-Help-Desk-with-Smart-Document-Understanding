@@ -1,0 +1,183 @@
+[
+    {
+        "id": "cf3ab698.2a1578",
+        "type": "tab",
+        "label": "Flow 2",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "bf420f88.2f2fe",
+        "type": "inject",
+        "z": "cf3ab698.2a1578",
+        "name": "",
+        "topic": "",
+        "payload": "Hello",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 130,
+        "y": 100,
+        "wires": [
+            [
+                "c38bbf2.dc0bb4"
+            ]
+        ]
+    },
+    {
+        "id": "c38bbf2.dc0bb4",
+        "type": "watson-conversation-v1",
+        "z": "cf3ab698.2a1578",
+        "name": "CUSTOMER",
+        "workspaceid": "41393c63-b29b-4a46-b1ef-920afb1d1bc3",
+        "multiuser": false,
+        "context": true,
+        "empty-payload": false,
+        "service-endpoint": "",
+        "timeout": "",
+        "optout-learning": false,
+        "x": 490,
+        "y": 220,
+        "wires": [
+            [
+                "78945c48.0120a4"
+            ]
+        ]
+    },
+    {
+        "id": "41cc4794.60a3f8",
+        "type": "function",
+        "z": "cf3ab698.2a1578",
+        "name": "Input Parsing",
+        "func": "msg.payload=msg.payload.text;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 280,
+        "y": 300,
+        "wires": [
+            [
+                "c38bbf2.dc0bb4",
+                "fc2760df.752ae"
+            ]
+        ]
+    },
+    {
+        "id": "78945c48.0120a4",
+        "type": "function",
+        "z": "cf3ab698.2a1578",
+        "name": "Parsing",
+        "func": "\nmsg.payload=msg.payload.output.text[0];\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 700,
+        "y": 260,
+        "wires": [
+            [
+                "beee1252.c8b81",
+                "a347fa0d.1a2a38"
+            ]
+        ]
+    },
+    {
+        "id": "beee1252.c8b81",
+        "type": "debug",
+        "z": "cf3ab698.2a1578",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 880,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "6049257d.67c2ac",
+        "type": "ui_form",
+        "z": "cf3ab698.2a1578",
+        "name": "",
+        "label": "",
+        "group": "1e735fc5.2fe4e",
+        "order": 1,
+        "width": 20,
+        "height": 2,
+        "options": [
+            {
+                "label": "Enter Your Input ",
+                "value": "text",
+                "type": "text",
+                "required": true,
+                "rows": null
+            }
+        ],
+        "formValue": {
+            "text": ""
+        },
+        "payload": "",
+        "submit": "submit",
+        "cancel": "cancel",
+        "topic": "",
+        "x": 80,
+        "y": 340,
+        "wires": [
+            [
+                "41cc4794.60a3f8"
+            ]
+        ]
+    },
+    {
+        "id": "fc2760df.752ae",
+        "type": "ui_text",
+        "z": "cf3ab698.2a1578",
+        "group": "1e735fc5.2fe4e",
+        "order": 3,
+        "width": 20,
+        "height": 1,
+        "name": "",
+        "label": "You",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 370,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "a347fa0d.1a2a38",
+        "type": "ui_text",
+        "z": "cf3ab698.2a1578",
+        "group": "1e735fc5.2fe4e",
+        "order": 4,
+        "width": 20,
+        "height": 1,
+        "name": "",
+        "label": "Bot",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "x": 810,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "1e735fc5.2fe4e",
+        "type": "ui_group",
+        "z": "",
+        "name": "chatbot",
+        "tab": "791c4c25.2ce144",
+        "order": 1,
+        "disp": true,
+        "width": 20,
+        "collapse": false
+    },
+    {
+        "id": "791c4c25.2ce144",
+        "type": "ui_tab",
+        "z": "",
+        "name": "customercare",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
