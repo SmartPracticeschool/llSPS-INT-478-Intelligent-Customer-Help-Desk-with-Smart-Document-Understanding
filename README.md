@@ -11,4 +11,6 @@ In Watson Discovery I have added electrical_power_transmission_lines.
 
 Node_Red Dasboard link after deploying : https://https://node-red-djziq.eu-gb.mybluemix.net/ui
 
+YOUTUBE VIDEO LINK: https://youtu.be/Su1Ai_O-yhA
+
 Have a casual talks like hello,bye,good morning,etc,for(SDU) like how to set time,how to turn on heater,how to access setting,how to operate thermostat,how to set up thermostat only.
